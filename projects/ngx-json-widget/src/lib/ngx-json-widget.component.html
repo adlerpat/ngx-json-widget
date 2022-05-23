@@ -1,0 +1,14 @@
+<div *ngIf="jsonResponse && config; else error" class="ngx-json-widget">
+    <div *ngFor="let propertyMap of config.propertyMap" class="ngx-json-widget-property">
+        <div class="ngx-json-widget-label">
+            {{propertyMap.label}}
+        </div>
+        <div *ngIf="getNestedValue(jsonResponse, propertyMap.prop); let value" class="ngx-json-widget-value">
+            {{value}}
+        </div>
+        <div *ngIf="propertyMap.comment" class="ngx-json-widget-comment">
+            {{propertyMap.comment}}
+        </div>
+    </div>
+</div>
+<ng-template #error>Error Loading Widget</ng-template>
